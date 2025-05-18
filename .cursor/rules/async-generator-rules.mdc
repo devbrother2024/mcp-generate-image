@@ -1,0 +1,37 @@
+---
+description: Python Async Generator 함수 사용 규칙
+globs: 
+alwaysApply: false
+---
+# Async Generator 함수 사용 규칙
+
+## 기본 규칙
+1. **async 생성자 함수에서 return 값 사용 금지**
+   - async 함수에서 `yield`를 사용하는 경우, `return` 문에 값을 포함할 수 없습니다.
+   - 대신 다음과 같이 사용하세요:
+     ```python
+     if condition:
+         yield "결과 메시지"
+         return  # 값 없이 return만 사용하거나
+     
+     # 또는
+     if condition:
+         yield "결과 메시지"
+     ```
+
+2. **스트리밍 응답 처리**
+   - 스트리밍 응답을 생성하는 경우 모든 출력은 `yield`로 처리해야 합니다.
+   - 예시: [app.py](mdc:mcp-client/app.py)의 `predict` 함수 참조
+
+3. **예외 처리**
+   - async 생성자 함수 내에서 예외를 처리할 때도 `return` 값을 사용하지 말고 `yield`를 사용하세요.
+   - 예시:
+     ```python
+     try:
+         # 로직
+     except Exception as e:
+         yield f"오류가 발생했습니다: {str(e)}"
+         return
+     ```
+
+
