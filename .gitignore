@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+.venv
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# 목업 이미지와 출력 이미지
+mock_images/*
+!mock_images/.gitkeep
+output/
+
+# 로그 파일
+*.log
+
+# 캐시 파일과 임시 파일
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/ 
