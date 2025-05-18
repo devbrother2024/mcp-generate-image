@@ -3,7 +3,6 @@
 MCP 서버 테스트를 위한 클라이언트 예제
 """
 import asyncio
-import os
 import base64
 from pathlib import Path
 from fastmcp import Client
@@ -29,7 +28,8 @@ async def test_image_generation():
             print(f"- {tool.name}: {tool.description}")
         
         # 이미지 생성 도구 호출
-        prompt = "푸른 하늘 아래 산과 호수가 있는 아름다운 풍경"
+        # prompt = "푸른 하늘 아래 산과 호수가 있는 아름다운 풍경"
+        prompt = "an anime illustration of an alien parrot"
         print(f"\n이미지 생성 중: '{prompt}'")
         
         # prompt만 전달

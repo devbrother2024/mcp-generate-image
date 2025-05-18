@@ -7,8 +7,6 @@ from mcp.types import TextContent, ImageContent
 import base64
 import os
 import time
-from pathlib import Path
-from typing import Optional
 from gradio_client import Client as GradioClient
 
 # MCP 서버 초기화
