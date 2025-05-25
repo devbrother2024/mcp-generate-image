@@ -39,6 +39,16 @@ python server.py
 fastmcp run server.py
 ```
 
+### Docker로 실행
+
+```bash
+# Docker 이미지 빌드
+docker build -t generate-image-mcp .
+
+# Docker 컨테이너 실행
+docker run -it --rm generate-image-mcp
+```
+
 ## 도구 목록
 
 1. `generate_image` - 텍스트 프롬프트를 기반으로 이미지를 생성합니다.

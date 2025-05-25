@@ -1,0 +1,30 @@
+# 베이스 이미지 설정 (Python 3.13을 기반으로 하는 slim 버전의 이미지를 사용)
+FROM python:3.13-slim
+
+# 작업 디렉토리 설정
+# 컨테이너 내부의 작업 디렉토리를 /app으로 설정합니다.
+# 이후의 모든 명령은 이 디렉토리 기준으로 실행됩니다.
+WORKDIR /app
+
+# 시스템 패키지 설치
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# 필요한 파일들 복사
+# 호스트의 현재 디렉토리에 있는 세 파일을 컨테이너의 /app 디렉토리에 복사합니다.
+COPY pyproject.toml .
+COPY server.py .
+
+# output 디렉토리 생성
+# 결과 파일 등을 저장할 output 디렉토리를 생성합니다.
+RUN mkdir -p output
+
+# 의존성 설치
+# pip을 최신 버전으로 업그레이드합니다.
+# pyproject.toml 파일을 기준으로 패키지를 빌드 및 설치합니다.
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir .
+
+# 컨테이너 실행 시 자동으로 server.py를 Python으로 실행하도록 설정합니다.
+ENTRYPOINT ["python", "server.py"]

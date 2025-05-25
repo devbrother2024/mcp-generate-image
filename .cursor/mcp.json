@@ -1,0 +1,8 @@
+{
+    "mcpServers": {
+        "mcp-image-server": {
+            "command": "docker",
+            "args": ["run", "-i", "--rm", "--init", "generate-image-mcp"]
+        }
+    }
+}
